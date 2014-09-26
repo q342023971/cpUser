@@ -53,4 +53,50 @@ function getSystemLogs()
 		return 0;
 	}
 }
+//获取文件目录
+function get_dir($dir)
+{
+	if(is_dir($dir))
+	{
+		$files = scandir($dir);
+		foreach($files as $value)
+		{
+			if($value!='.' && $value!='..')
+			{
+				if(is_dir($dir.$value))
+				{
+					$dir_list[$value]=get_dir($dir.$value.'/');
+				}else{
+					$dir_list[]=$value;
+				}
+			}
+		}
+		return $dir_list;
+	}else{
+		return false;
+	}
+}
+//获取扩展目录
+function get_expansion_dir($expansion,$dir=null)
+{
+	if(!$dir) $dir=CONFIG_PATH;
+	foreach($expansion as $key=>$value)
+	{
+		if($value!='config.php')
+		{
+			$expansion_list[$key]['dir']=$value;
+			if(is_dir($dir.$key))
+			{
+				$expansion_list[$key]['dir']=get_expansion_dir($expansion[$key],$dir.$key.'/');
+				if(is_file($dir.$key.'/config.php'))
+				{
+					// 加载扩展设置
+					$expansion_list[$key]['config'] = include $dir.$key.'/config.php';
+				}
+			}
+			
+		}
+	}
+	return $expansion_list;
+}
 ?>

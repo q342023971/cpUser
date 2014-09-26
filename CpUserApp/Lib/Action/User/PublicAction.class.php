@@ -50,7 +50,7 @@ class PublicAction extends Action
 					$this->error("注册失败");
 				}
 			}else{
-				$this->error($User->getError());
+				$this->error(L('MODEL_USER_'.$User->getError()));
 			}
 		}else{
 			$this->display();
@@ -58,17 +58,22 @@ class PublicAction extends Action
 	}
 	//登录
 	public function login() {
+		$api=trim($_GET['api']);
+		$id=trim($_GET['id']);
+		if($api) cookie('api',$api);
+		if($id) cookie('api_id',$id);
 		$this->display();
 	}
 	public function logins()
 	{
+		$jsonp=$_GET['jsonp'];
 		$rnd=$_GET['rnd'];
 		if($rnd)
 		{
 			//dump(base64_decode($rnd));
 			//dump(base64_decode('8BAC5C0A6C6F3ABA4176C41A7C1CE1AA4D9634499F15ABB1C87B189EC9C3FABED2020D0E8B3BC2422CB05D604A0F81B6AE57AC6F05B4D7320DC169AFB46C737C9CA696932037738DB9F7E292FA974D951DA8E2BABFF6B61C52866E8E5159D08CC0ECBA06F6541C27D8B8FC68916B4C128D29EFE93832D76C766148BD56617787'));
 			//$this->setPublic('8BAC5C0A6C6F3ABA4176C41A7C1CE1AA4D9634499F15ABB1C87B189EC9C3FABED2020D0E8B3BC2422CB05D604A0F81B6AE57AC6F05B4D7320DC169AFB46C737C9CA696932037738DB9F7E292FA974D951DA8E2BABFF6B61C52866E8E5159D08CC0ECBA06F6541C27D8B8FC68916B4C128D29EFE93832D76C766148BD56617787','10001');
-			echo 'fEnData2("200\n10001\n8BAC5C0A6C6F3ABA4176C41A7C1CE1AA4D9634499F15ABB1C87B189EC9C3FABED2020D0E8B3BC2422CB05D604A0F81B6AE57AC6F05B4D7320DC169AFB46C737C9CA696932037738DB9F7E292FA974D951DA8E2BABFF6B61C52866E8E5159D08CC0ECBA06F6541C27D8B8FC68916B4C128D29EFE93832D76C766148BD56617787")';
+			echo $jsonp.'("200\n10001\n8BAC5C0A6C6F3ABA4176C41A7C1CE1AA4D9634499F15ABB1C87B189EC9C3FABED2020D0E8B3BC2422CB05D604A0F81B6AE57AC6F05B4D7320DC169AFB46C737C9CA696932037738DB9F7E292FA974D951DA8E2BABFF6B61C52866E8E5159D08CC0ECBA06F6541C27D8B8FC68916B4C128D29EFE93832D76C766148BD56617787")';
 			//http://id.719471.net/index.php?g=User&m=Public&a=logins&rnd=MTUxMTIxMDU0NDU=&jsonp=fEnData
 		}
 		//echo '<html><head><script type="text/javascript">window.location.href = "http://mail.126.com/errorpage/error126.htm?errorType=460&errorUsername=q342023971@126.com";</script></head><body></body></html>';
@@ -80,13 +85,24 @@ class PublicAction extends Action
 			$rcode=trim($_POST['rcode']);
 			$savelogin=trim($_POST['savelogin']);
 			$username=trim($_POST['username']);
-			$User=D('User');
+			$bDyn=trim($_POST['bDyn']);
+			if($bDyn==1){
+				$User=D('User');
+			}else{
+				$User=D('SubUser');
+			}
 			$user=$User->login($username,$rcode);
 			if($user)
 			{
 				$time=time();
 				cookie('userKEY',md5($user['id'].C('USER_C_KEY').$time));
 				if($savelogin) C('COOKIE_EXPIRE',864000);
+				if($bDyn==1)
+				{
+					cookie('mainID',$user['id']);
+				}else{
+					cookie('mainID',$user['user_id']);
+				}
 				cookie('userID',$user['id']);
 				cookie('userNAME',$user['username']);
 				cookie('lastloginip',$user['lastloginip']);
@@ -95,14 +111,34 @@ class PublicAction extends Action
 				cookie('grade_id',$user['grade_id']);
 				cookie('nickname',$user['nickname']);
 				$User->where('id='.$user['id'])->save(array('lastloginip'=>get_client_ip(),'lastlogindate'=>$time));
+				systemLogs($username,'SUCCESS','userLogin','success');
+				$api=cookie('api');
+				if($api)
+				{
+					$api_id=cookie('api_id');
+					if($api_id)
+					{
+						$redirect=U($api.'/gotoAdmin?id='.$api_id);
+					}else{
+						$redirect=U($api.'/index');
+					}
+				}else{
+					$redirect=U('Index/index');
+				}
 				if($this->isAjax())
 				{
-					$this->success(U('Index/index'),true);
+					$this->success($redirect,true);
 				}else{
-					$this->redirect('Index/index');
+					redirect($redirect);
 				}
 			}else{
-				$this->error($User->getError(),$this->isAjax());
+				systemLogs($username,$User->getError(),'userLogin','error');
+				if($this->isAjax())
+				{
+					$this->error($User->getError(),$this->isAjax());
+				}else{
+					$this->error(L('MODEL_USER_'.$User->getError()));
+				}
 			}
 		}else{
 			$this->error('页面不存在');
@@ -197,6 +233,18 @@ class PublicAction extends Action
 		$background_color = imagecolorallocate($im, 255, 255, 255);
 		imagepng($im);
 		imagedestroy($im);
+	}
+	public function loginOut()
+	{
+		cookie('userKEY',null);
+		cookie('userID',null);
+		cookie('userNAME',null);
+		cookie('lastloginip',null);
+		cookie('lastlogindate',null);
+		cookie('head',null);
+		cookie('grade_id',null);
+		cookie('nickname',null);
+		$this->success("退出登录成功");
 	}
 }
 ?>

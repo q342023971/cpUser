@@ -111,7 +111,7 @@
                                                     <tr>
 														<td><eq name="newLogs[$vo['id']]" value="1"><i style="color:#FF0000" class="icon-asterisk"></i></eq>{cp:$vo.id}</td>
 														<td>{cp:$vo.username}</td>
-														<td>【{cp::L('DB_SYSTEM_LOGS_ACTION_'.$vo['action'])} {cp::L($vo['type'])}】{cp:$vo.return}</td>
+														<td>【{cp::L('DB_SYSTEM_LOGS_ACTION_'.$vo['action'])} {cp::L($vo['type'])}】{cp::L('MODEL_USER_'.$vo['return'])}</td>
 														<td>{cp:$vo.ip}</td>
 														<td>{cp:$vo.time|date="Y-m-d H:i:s",###}</td>
 													</tr>

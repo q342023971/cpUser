@@ -1,5 +1,6 @@
 <?php
 $config	=require CPWEB_ROOT.'cp.config.inc.php';
+$database	=require CPWEB_ROOT.'cp.database.inc.php';
 $array=array(
 	//URL模式,1=>pathinfo模式,2=>隐藏index.php
 	'URL_MODEL'=>0,
@@ -152,5 +153,5 @@ $array=array(
 	'EMAIL_GRADE_SUCCESS'=>0,
 	'EMAIL_BIND_SUCCESS'=>1,
 );
-return array_merge($array,$config);
+return array_merge($array,$config,$database);
 ?>

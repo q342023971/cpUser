@@ -70,7 +70,7 @@ fHtml5Tag();
 				齐耀帐号登录
 			</div>
 			<div id="lbDynPw" class="loginFuncDynPw">
-				合作账户登录
+				子账号登录
 			</div>
 		</div>
 		<div class="loginForm">
@@ -105,40 +105,33 @@ fHtml5Tag();
 							<a class="forgetPwd" href="http://reg.163.com/getpasswd/RetakePassword.jsp?from=mail126" target="_blank" title="找回密码">忘记密码了?</a>
 						</div>
 					</div>
-					<div class="loginFormBtn">
-						<button id="loginBtn" class="btn btn-main btn-login" tabindex="6" type="submit">登&nbsp;&nbsp;录</button>
-						<a id="lfBtnReg" class="btn btn-side btn-reg" href="http://reg.email.163.com/mailregAll/reg0.jsp?from=126mail" target="_blank" tabindex="7">注&nbsp;&nbsp;册</a>
+				</div>
+				<!-- 子账户登录 -->
+				<div id="dynPwLogin" style="display:none">
+                    <div id="z_idInputLine" class="loginFormIpt showPlaceholder">
+                        <b class="ico ico-uid"></b>
+                        <input class="formIpt" tabindex="1" title="请输入子账户" id="z_idInput" type="text" maxlength="50" value="" />
+                        <div id="mobtips"></div>
+                        <!--<label for="z_idInput" class="placeholder" id="z_idPlaceholder">子账户</label>-->
+                    </div>
+					<div id="z_pwdInputLine" class="loginFormIpt showPlaceholder">
+						<b class="ico ico-pwd"></b>
+						<input class="formIpt" tabindex="2" title="请输入密码" id="z_pwdInput" name="z_password" type="password"/>
+						<!--<label for="z_pwdInput" class="placeholder" id="z_pwdPlaceholder">子账户密码</label>-->
+						<!--<p id="z_capsLockHint" style="display: none">大写状态开启</p>-->
+					</div>
+					<div id="dynPwLoginHint">
+						<p id="dynPwLoginHintDft"><b class="ico ico-miniAlert"></b>子账号格式：主账号ID:子用户名</p>
 					</div>
 				</div>
-				<!-- 动态密码登录 -->
-				<div id="dynPwLogin" style="display:none">
-					合作网站接口列表：QQ，微信，微博，支付宝，淘宝（制作中）
-				</div>
-				<div class="mailApp">
-					<a class="mailApp-android" href="http://mail.163.com/client/dl.html?from=mail5" target="_blank"><b class="ico ico-android"></b><span>Android版</span></a><a class="mailApp-ios" href="http://mail.163.com/client/dl.html?from=mail5" target="_blank"><b class="ico ico-ios"></b><span>iPhone版</span></a>
-				</div>
+					<div class="loginFormBtn">
+						<button id="loginBtn" class="btn btn-main btn-login" tabindex="6" type="submit">登&nbsp;&nbsp;录</button>
+						<a id="lfBtnReg" class="btn btn-side btn-reg" href="{cp::U('Public/register')}" target="_blank" tabindex="7">注&nbsp;&nbsp;册</a>
+					</div>
 			</form>
 			<div class="ext" id="loginExt">
 				<ul id="extText"></ul>
 			</div>
-		</div>
-
-		<!-- 易信登录 -->
-		<a id="yxLoginEntry" href="javascript:void(0)" title="使用易信扫一扫快速登录！"></a>
-		<div id="loginByYX" class="loginByYX">
-			<h3>使用<a class="yxLink" href="http://www.yixin.im" target="_blank"><b class="ico ico-yxLogo"></b>易信</a>扫一扫快速登录</h3>
-			<img id="yxCode" width="165" height="165" src="" />
-			<div id="yxCodeTxt" class="loginByYX-txt"></div>
-			<p class="loginByYX-install">手机还没有安装易信？<br /><a href="http://yixin.im/" target="_blank">马上安装</a></p>
-			<div id="yxCodeRefresh" style="display:none;">
-				<div class="loginByYX-mask"></div>
-				<div class="loginByYX-refreshWrap">
-					<a id="refeshYXCodeBtn" class="loginByYX-refreshBtn" href="javascript:void(0)">刷 新</a>
-					<p class="loginByYX-refreshHint"><b>二维码已失效</b><br/>请刷新后重新扫描</p>
-				</div>
-			</div>
-			<a id="closeYxLogin" href="javascript:void(0)" title="关闭"></a>
-			<form id="codeLoginForm" method="post" action="" autocomplete="off" target="_self"></form>
 		</div>
 	</div>
 </section>
@@ -201,23 +194,11 @@ var gErrorInfo = {
 	'noPw' : {
 		'title' : '请输入您的密码'
 	},
-	'noDynPwByMob' : {
-		'title' : '请输入手机短信中的动态密码'
+	'noSubUserId' : {
+		'title' : '请先输入子账号的帐号'
 	},
-	'noDynPwByYX' : {
-		'title' : '请输入易信接收到的动态密码'
-	},
-	'dynPwWrong' : {
-		'title' : '您输入的动态密码错误，请重新输入'
-	},
-	'noBindingMob' : {
-		'title' : '该邮箱帐号未绑定手机号码，需绑定才能使用动态密码功能 <a id="bindMobileBtn" href="http://shouji.mail.163.com/?from=dtmm" target="_blank">立即绑定>></a>'
-	},
-	'dynPwd2Much' : {
-		'title' : '您今天使用动态密码登录次数太多了，请用普通密码登录吧'
-	},
-	'mobLoginWrongDomain' : {
-		'title' : '这个帐号请到<a href="http://mail.163.com">163邮箱</a>进行登录'
+	'noSubUserPw' : {
+		'title' : '请输入子账号密码'
 	},
 	'inputWrong' : {
 		'title' : '帐号或密码错误',
@@ -231,10 +212,6 @@ var gErrorInfo = {
 	},
 	'loginWrong' : {
 		'title' : '您的登录过于频繁，请稍后再试。'
-	},
-	'loginTimeout' : {
-		'title' : '登录超时！',
-		'info' 	: '当前邮箱登录状态已失效, 请重新登录。'
 	}
 };
 
@@ -257,14 +234,13 @@ var gErrorInfo = {
 		showError 				: fShowError,
 		showLayer 				: fShowLayer,
 		hideLayer 				: fHideLayer,
-		yxLogin 				: fInitYxLogin,
 		zoomWrap 				: fZoomWrap,
 		vericalAlignBody 		: fVericalAlignBody,
 		// 其它
 		KX 						: fKX
 	};
 
-	var oId, oIdL, oPw, oPwL;
+	var oId,z_oId, oIdL, oPw, oPwL,z_oPw;
 	var tab1Cls = 'login tab-1',
 		tab2Cls = 'login tab-2';
 	var ntabOn = 1,
@@ -280,14 +256,16 @@ var gErrorInfo = {
 		var me = this;
 
 		oId = $id('idInput');
+		z_oId = $id('z_idInput');
 		oIdL = $id('idInputLine');
 		oPw = $id('pwdInput');
 		oPwL = $id('pwdInputLine');
+		z_oPw = $id('z_pwdInput');
 
 		window.frames['frameforlogin'].location.href = 'about:blank';
 		// 读取url判断是否有错误信息
 		var sErrKey = 'errorType';
-		if(window.location.href.indexOf('?' + sErrKey) > -1){
+		if(window.location.href.indexOf('&' + sErrKey) > -1){
 			var sErrorCode = fGetQuery(sErrKey);
 			me.showError(sErrorCode);
 		}
@@ -330,7 +308,6 @@ var gErrorInfo = {
 			}
 		});
 		
-		me.yxLogin();
 		me.KX(); // 可信标识
 	}
 
@@ -603,14 +580,6 @@ var gErrorInfo = {
 
 		if(ntabOn == 1){
 			// 加载动态密码登录js
-			var oDynPwConf = {
-				domain: '126.com'
-			};
-			if(!window.DynamicPassword){
-				fGetScript('http://mimg.127.net/index/lib/scripts/dynamicpassword.js', function(){
-					new DynamicPassword(oDynPwConf);
-				});
-			}
 			oPw.name = '';
 			sTmpPwd = oPw.value;
 			oNormalLg.style.display = 'none';
@@ -626,10 +595,6 @@ var gErrorInfo = {
 				fCls(oPwL, 'showPlaceholder', 'add');
 			}else{
 				fCls(oPwL, 'showPlaceholder', 'remove');
-			}
-			if(window.bHTTPSDisabled){
-				// 浏览器禁止了ssl
-				alert('由于您在浏览器设置中禁止使用了ssl，所以无法使用动态密码登录！');
 			}
 		}else{
 			oPw.name = 'password';
@@ -675,40 +640,56 @@ var gErrorInfo = {
 
 		var bDyn = ntabOn == 2;
 
-		// 检查输入
-		oId.value = fTrim(oId.value);
-		if(oId.value == ''){
-			oId.focus();
-			me.showError(1);
-			return false;
-		}
-		if(ntabOn == 1){
+		if(ntabOn==1){
+			// 检查输入
+			oId.value = fTrim(oId.value);
+			if(oId.value == ''){
+				oId.focus();
+				me.showError(1);
+				return false;
+			}
 			if(oPw.value.length == ''){
 				oPw.focus();
 				me.showError(3);
 				return false;
 			}else if(!fTrim(oPw.value)){ // 特殊处理密码全空格
-				me.showError(460);
+				me.showError('PASSWORD_ERROR');
 				return false;
 			}
-		}
 
-		//用户名、密码不标准字符处理
-		oId.value = me.handleString(oId.value);
-		oPw.value = me.handleString(oPw.value);
+			//用户名、密码不标准字符处理
+			oId.value = me.handleString(oId.value);
+			oPw.value = me.handleString(oPw.value);
 
-		$id('username').value = oId.value;
-		/**
-		//16位密码截断
-		if(oPw.value.length > 16){
-			oPw.value = oPw.value.substr(0,16);
-		}
-		*/
-		//保存十天免登录
-		if($id('remAutoLogin').checked){
-			$id('savelogin').value = 1;
+			$id('username').value = oId.value;
+			/**
+			//16位密码截断
+			if(oPw.value.length > 16){
+				oPw.value = oPw.value.substr(0,16);
+			}
+			*/
+			//保存十天免登录
+			if($id('remAutoLogin').checked){
+				$id('savelogin').value = 1;
+			}else{
+				$id('savelogin').value = 0;
+			}
 		}else{
-			$id('savelogin').value = 0;
+			// 检查输入
+			z_oId.value = fTrim(z_oId.value);
+			if(z_oId.value == ''){
+				z_oId.focus();
+				me.showError('SUB_USER_NO_USERNAME');
+				return false;
+			}
+			if(z_oPw.value.length == ''){
+				z_oPw.focus();
+				me.showError('SUB_USER_NO_PASSWORD');
+				return false;
+			}else if(!fTrim(z_oPw.value)){ // 特殊处理密码全空格
+				me.showError('PASSWORD_ERROR');
+				return false;
+			}
 		}
 		//登陆后锁定tab
 		var oTabDisabled;
@@ -749,12 +730,14 @@ var gErrorInfo = {
 			})(),
 			sUrlUid = oId.value + '@' + gOption.sDomain;
 		//选择登录方式
-		window.sHttpAction  = gOption.url+'&'
-		+ fUrlP('df',sUrlDf,true)
-		+ fUrlP('from','web')
-		+ fUrlP('uid',sUrlUid)
-		+ (bDyn ? fUrlP('passAuthType', '1'):'');
-		loginRequest('fEnData');
+		var HttpAc=new Object(); 
+		HttpAc.url=gOption.url;
+		HttpAc.df=sUrlDf;
+		HttpAc.uid=sUrlUid;
+		HttpAc.bDyn=bDyn;
+		
+		window.sHttpAction = HttpAc;
+		loginRequest('fEnData2');
 		return false;
 	}
 
@@ -774,10 +757,6 @@ var gErrorInfo = {
 	    	nCode = nCode - 0;
 	    }
 		switch(nCode){
-			case 'Login_Timeout':
-				sErrType = 'loginTimeout';
-				nTarget = 0;
-				break;
 			case 1:
 				sErrType = 'noId';
 				nTarget = 1;
@@ -790,36 +769,21 @@ var gErrorInfo = {
 				sErrType = 'noPw';
 				nTarget = 2;
 				break;
-			case 4:
-				sErrType = 'noDynPw';
-				nTarget = 2;
-				break;
-			case 5:
-				sErrType = 'noDynPwByMob';
-				nTarget = 2;
-				break;
-			case 6:
-				sErrType = 'noDynPwByYX';
-				nTarget = 2;
-				break;
-			case 1000:
-				sErrType = 'noBindingMob';
+			case 'SUB_USER_NO_USERNAME':
+				sErrType = 'noSubUserId';
 				nTarget = 1;
 				break;
-			case 1001:
-				sErrType = 'dynPwWrong';
+			case 'SUB_USER_NO_PASSWORD':
+				sErrType = 'noSubUserPw';
 				nTarget = 2;
-				break;
-			case 1002:
-				sErrType = 'dynPwd2Much';
-				nTarget = 0;
-				break;
-			case 1003:
-				sErrType = 'mobLoginWrongDomain';
-				nTarget = 1;
 				break;
 			case 420:
-			case 422:
+			case 'PASSWORD_ERROR':
+				$id('pwdInput').value = '';
+				sErrType = 'inputWrong';
+				nTarget = 0;
+				break;
+			case 'USERNAME_LOCKED':
 				sErrType = 'idLocked';
 				nTarget = 1;
 				break;
@@ -828,7 +792,7 @@ var gErrorInfo = {
 			case 416:
 			case 417:
 			case 418:
-			case 419:
+			case 'USERNAME_LOGIN_WRONG':
 				sErrType = 'loginWrong';
 				nTarget = 0;
 				break;
@@ -906,37 +870,6 @@ var gErrorInfo = {
 		fCls($id('bubbleLayer'), 'bubbleLayer-show', 'remove');
 		$id('mainMask').style.display = 'none';
 		fEventUnlisten(document, 'click', indexLogin.hideLayer);
-	}
-
-	/**
-	 * 显示易信二维码登录
-	 */
-	function fInitYxLogin(){
-		var me = this;
-		var oEntryBtn = $id('yxLoginEntry'),
-			oCloseEntryBtn = $id('closeYxLogin'),
-			oYixinWrap = $id('loginByYX');
-			
-		fEventListen(oEntryBtn, 'click', function(){
-			if(window.yixinLogin){
-				_fShow();
-			}else{
-				fGetScript("http://mimg.127.net/index/lib/scripts/yxlogin_v2.js", function(){
-					_fShow();
-				});
-			}
-			return false;
-		});
-
-		fEventListen(oCloseEntryBtn, 'click', function(){
-			window.yixinLogin && yixinLogin.clearPoll();
-			me.zoomWrap(oYixinWrap, 'zoomOut', 245, 365);
-		});
-
-		function _fShow(){
-			yixinLogin.init();
-			me.zoomWrap(oYixinWrap, 'zoomIn', 245, 365);
-		}
 	}
 
 	/**

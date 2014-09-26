@@ -1,467 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>{cp:&WEB_LTD} - {cp:%MEMBER_CENTER}</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="zilaiye.org">
+    <meta charset="utf-8">
+    <title>{cp:&WEB_LTD} - {cp:%MEMBER_CENTER}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
 
-	<!-- The styles -->
-	<link id="bs-css" href="{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/bootstrap-cerulean.css" rel="stylesheet">
-	<style type="text/css">
-	  body {
-		padding-bottom: 40px;
-	  }
-	  .sidebar-nav {
-		padding: 9px 0;
-	  }
-	</style>
-	<link href="{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/charisma-app.css" rel="stylesheet">
-	<link href="{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/fullcalendar.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/fullcalendar.print.css' rel='stylesheet'  media='print'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/chosen.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/uniform.default.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/colorbox.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/jquery.cleditor.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/jquery.noty.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/noty_theme_default.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/elfinder.min.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/elfinder.theme.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/jquery.iphone.toggle.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/opa-icons.css' rel='stylesheet'>
-	<link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/css/uploadify.css' rel='stylesheet'>
+    <!-- The styles -->
+    <link id="bs-css" href="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/css/bootstrap-cerulean.min.css" rel="stylesheet">
 
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	  <script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/html5shiv.min.js"></script>
-	<![endif]-->
+    <link href="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/css/charisma-app.css" rel="stylesheet">
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/css/jquery.noty.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/css/elfinder.min.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/css/uploadify.css' rel='stylesheet'>
+    <link href='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/css/animate.min.css' rel='stylesheet'>
 
-	<!-- The fav icon -->
-	<link rel="shortcut icon" href="img/favicon.ico">
-		
+    <!-- jQuery -->
+    <script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/jquery/jquery.min.js"></script>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/img/favicon.ico">
+
 </head>
 
 <body>
-		<include file="Public-topbar" />
-		<div class="container-fluid">
-		<div class="row-fluid">
-				
-			<!-- left menu starts -->
-			<div class="span2 main-menu-span">
-				<div class="well nav-collapse sidebar-nav">
-					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li class="nav-header hidden-tablet">{cp:%MAIN}</li>
-						<li><a class="ajax-link" href="{cp::U('Info/editPassword')}"><i class="icon-home"></i><span class="hidden-tablet"> {cp:%ACTION_INFO_EDITPASSWORD}</span></a></li>
-						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
-						<li><a class="ajax-link" href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
-						<li><a class="ajax-link" href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>
-						<li><a class="ajax-link" href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts</span></a></li>
-						<li><a class="ajax-link" href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>
-						<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
-						<li class="nav-header hidden-tablet">Sample Section</li>
-						<li><a class="ajax-link" href="table.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Tables</span></a></li>
-						<li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
-						<li><a class="ajax-link" href="grid.html"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>
-						<li><a class="ajax-link" href="file-manager.html"><i class="icon-folder-open"></i><span class="hidden-tablet"> File Manager</span></a></li>
-						<li><a href="tour.html"><i class="icon-globe"></i><span class="hidden-tablet"> Tour</span></a></li>
-						<li><a class="ajax-link" href="icon.html"><i class="icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>
-						<li><a href="error.html"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Page</span></a></li>
-						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
-					</ul>
-					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
-				</div><!--/.well -->
-			</div><!--/span-->
-			<!-- left menu ends -->
-			
-			<noscript>
-				<div class="alert alert-block span10">
-					<h4 class="alert-heading">Warning!</h4>
-					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
-				</div>
-			</noscript>
-			
-			<div id="content" class="span10">
-			<!-- content starts -->
-			
+    <include file="Public-topbar" />
+<div class="ch-container">
+    <div class="row">
+        
+        <include file="Public-menu" />
 
-			<div>
-				<ul class="breadcrumb">
-					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
-					</li>
-					<li>
-						<a href="#">Dashboard</a>
-					</li>
-				</ul>
-			</div>
-			<div class="sortable row-fluid">
-				<a data-rel="tooltip" title="6 new members." class="well span3 top-block" href="#">
-					<span class="icon32 icon-red icon-user"></span>
-					<div>Total Members</div>
-					<div>507</div>
-					<span class="notification">6</span>
-				</a>
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
 
-				<a data-rel="tooltip" title="4 new pro members." class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-star-on"></span>
-					<div>Pro Members</div>
-					<div>228</div>
-					<span class="notification green">4</span>
-				</a>
+                <p>您的系统不支持或者没启用<a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    无法使用本系统。</p>
+            </div>
+        </noscript>
 
-				<a data-rel="tooltip" title="$34 new sales." class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-cart"></span>
-					<div>Sales</div>
-					<div>$13320</div>
-					<span class="notification yellow">$34</span>
-				</a>
-				
-				<a data-rel="tooltip" title="12 new messages." class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-envelope-closed"></span>
-					<div>Messages</div>
-					<div>25</div>
-					<span class="notification red">12</span>
-				</a>
-			</div>
-			
-			<div class="row-fluid">
-				<div class="box span12">
-					<div class="box-header well">
-						<h2><i class="icon-info-sign"></i> Introduction</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<h1>Charisma <small>free, premium quality, responsive, multiple skin admin template.</small></h1>
-						<p>Its a live demo of the template. I have created Charisma to ease the repeat work I have to do on my projects. Now I re-use Charisma as a base for my admin panel work and I am sharing it with you :)</p>
-						<p><b>All pages in the menu are functional, take a look at all, please share this with your followers.</b></p>
-						
-						<p class="center">
-							<a href="http://usman.it/free-responsive-admin-template" class="btn btn-large btn-primary"><i class="icon-chevron-left icon-white"></i> Back to article</a> 
-							<a href="http://usman.it/free-responsive-admin-template" class="btn btn-large"><i class="icon-download-alt"></i> Download Page</a>
-						</p>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-			</div>
-					
-			<div class="row-fluid sortable">
-				<div class="box span4">
-					<div class="box-header well">
-						<h2><i class="icon-th"></i> Tabs</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<ul class="nav nav-tabs" id="myTab">
-							<li class="active"><a href="#info">Info</a></li>
-							<li><a href="#custom">Custom</a></li>
-							<li><a href="#messages">Messages</a></li>
-						</ul>
-						 
-						<div id="myTabContent" class="tab-content">
-							<div class="tab-pane active" id="info">
-								<h3>Charisma <small>a fully featued template</small></h3>
-								<p>Its a fully featured, responsive template for your admin panel. Its optimized for tablet and mobile phones. Scan the QR code below to view it in your mobile device.</p> <img alt="QR Code" class="charisma_qr center" src="img/qrcode136.png" />
-							</div>
-							<div class="tab-pane" id="custom">
-								<h3>Custom <small>small text</small></h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at. Nulla tellus elit, varius non commodo eget, mattis vel eros. In sed ornare nulla. Donec consectetur, velit a pharetra ultricies, diam lorem lacinia risus, ac commodo orci erat eu massa. Sed sit amet nulla ipsum. Donec felis mauris, vulputate sed tempor at, aliquam a ligula. Pellentesque non pulvinar nisi.</p>
-							</div>
-							<div class="tab-pane" id="messages">
-								<h3>Messages <small>small text</small></h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at. Nulla tellus elit, varius non commodo eget, mattis vel eros. In sed ornare nulla. Donec consectetur, velit a pharetra ultricies, diam lorem lacinia risus, ac commodo orci erat eu massa. Sed sit amet nulla ipsum. Donec felis mauris, vulputate sed tempor at, aliquam a ligula. Pellentesque non pulvinar nisi.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor.</p>
-							</div>
-						</div>
-					</div>
-				</div><!--/span-->
-						
-				<div class="box span4">
-					<div class="box-header well" data-original-title>
-						<h2><i class="icon-list-alt"></i> Realtime Traffic</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<div id="realtimechart" style="height:190px;"></div>
-							<p class="clearfix">You can update a chart periodically to get a real-time effect by using a timer to insert the new data in the plot and redraw it.</p>
-							<p>Time between updates: <input id="updateInterval" type="text" value="" style="text-align: right; width:5em"> milliseconds</p>
-					</div>
-				</div><!--/span-->
-			</div><!--/row-->
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="{cp::U('Index/index')}">{cp:%ACTION_USER_INDEX_INDEX}</a>
+        </li>
+        <li>
+            <a href="{cp::U('Info/editPassword')}">修改密码</a>
+        </li>
+    </ul>
+</div>
 
-			<div class="row-fluid sortable">
-				<div class="box span4">
-					<div class="box-header well" data-original-title>
-						<h2><i class="icon-list"></i> Buttons</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content buttons">
-						<p class="btn-group">
-							  <button class="btn">Left</button>
-							  <button class="btn">Middle</button>
-							  <button class="btn">Right</button>
-						</p>
-						<p>
-							<button class="btn btn-small"><i class="icon-star"></i> Icon button</button>
-							<button class="btn btn-small btn-primary">Small button</button>
-							<button class="btn btn-small btn-danger">Small button</button>
-						</p>
-						<p>
-							<button class="btn btn-small btn-warning">Small button</button>
-							<button class="btn btn-small btn-success">Small button</button>
-							<button class="btn btn-small btn-info">Small button</button>
-						</p>
-						<p>
-							<button class="btn btn-small btn-inverse">Small button</button>
-							<button class="btn btn-large btn-primary btn-round">Round button</button>
-							<button class="btn btn-large btn-round"><i class="icon-ok"></i></button>
-							<button class="btn btn-primary"><i class="icon-edit icon-white"></i></button>
-						</p>
-						<p>
-							<button class="btn btn-mini">Mini button</button>
-							<button class="btn btn-mini btn-primary">Mini button</button>
-							<button class="btn btn-mini btn-danger">Mini button</button>
-							<button class="btn btn-mini btn-warning">Mini button</button>
-						</p>
-						<p>
-							<button class="btn btn-mini btn-info">Mini button</button>
-							<button class="btn btn-mini btn-success">Mini button</button>
-							<button class="btn btn-mini btn-inverse">Mini button</button>
-						</p>
-					</div>
-				</div><!--/span-->
-					
-				<div class="box span4">
-					<div class="box-header well" data-original-title>
-						<h2><i class="icon-list"></i> Buttons</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content  buttons">
-						<p>
-							<button class="btn btn-large">Large button</button>
-							<button class="btn btn-large btn-primary">Large button</button>
-						</p>
-						<p>
-							<button class="btn btn-large btn-danger">Large button</button>
-							<button class="btn btn-large btn-warning">Large button</button>
-						</p>
-						<p>
-							<button class="btn btn-large btn-success">Large button</button>
-							<button class="btn btn-large btn-info">Large button</button>
-						</p>
-						<p>
-							<button class="btn btn-large btn-inverse">Large button</button>
-						</p>
-						<div class="btn-group">
-							<button class="btn btn-large">Large Dropdown</button>
-							<button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-							<ul class="dropdown-menu">
-								<li><a href="#"><i class="icon-star"></i> Action</a></li>
-								<li><a href="#"><i class="icon-tag"></i> Another action</a></li>
-								<li><a href="#"><i class="icon-download-alt"></i> Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#"><i class="icon-tint"></i> Separated link</a></li>
-							</ul>
-						</div>
-						
-					</div>
-				</div><!--/span-->
-					
-				<div class="box span4">
-					<div class="box-header well" data-original-title>
-						<h2><i class="icon-list"></i> Weekly Stat</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<ul class="dashboard-list">
-							<li>
-								<a href="#">
-									<i class="icon-arrow-up"></i>                               
-									<span class="green">92</span>
-									New Comments                                    
-								</a>
-							</li>
-						  <li>
-							<a href="#">
-							  <i class="icon-arrow-down"></i>
-							  <span class="red">15</span>
-							  New Registrations
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-minus"></i>
-							  <span class="blue">36</span>
-							  New Articles                                    
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-comment"></i>
-							  <span class="yellow">45</span>
-							  User reviews                                    
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-arrow-up"></i>                               
-							  <span class="green">112</span>
-							  New Comments                                    
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-arrow-down"></i>
-							  <span class="red">31</span>
-							  New Registrations
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-minus"></i>
-							  <span class="blue">93</span>
-							  New Articles                                    
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-comment"></i>
-							  <span class="yellow">254</span>
-							  User reviews                                    
-							</a>
-						  </li>
-						</ul>
-					</div>
-				</div><!--/span-->
-			</div><!--/row-->
-				  
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-edit"></i> 修改密码</h2>
+            </div>
+            <div class="box-content">
+                <form class="form-inline" role="form" method="post" action="{cp::U('Info/editPassword')}">
+                    <div class="control-group">
+                        <label class="control-label">用户名:</label>
+                        {cp:#userNAME}
+                    </div>
+					<br>
+                    <div class="control-group">
+                        <label class="control-label" for="old_password">旧密码</label>
+                        <input type="password" class="form-control" id="old_password" name="old_password">
+                    </div>
+					<br>
+                    <div class="control-group">
+                        <label class="control-label" for="new_password">新密码</label>
+                        <input type="password" class="form-control" id="new_password" name="new_password">
+                    </div>
+					<br>
+                    <div class="control-group">
+                        <label class="control-label" for="confirm_password">确认密码</label>
+                        <input type="password" class="form-control" name="confirm_password" name="confirm_password">
+                    </div>
+					<br>
+					<div class="control-group">
+                        <button type="submit" class="btn btn-default">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
 
-		  
-       
-					<!-- content ends -->
-			</div><!--/#content.span10-->
-				</div><!--/fluid-row-->
-				
-		<hr>
+</div><!--/row-->
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
 
-		<div class="modal hide fade" id="myModal">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Settings</h3>
-			</div>
-			<div class="modal-body">
-				<p>Here settings can be configured...</p>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Close</a>
-				<a href="#" class="btn btn-primary">Save changes</a>
-			</div>
-		</div>
+    <hr>
 
-		<footer>
-			<p class="pull-left">&copy; <a href="http://www.zilaiye.org" target="_blank">zilaiye</a> 2012</p>
-			<p class="pull-right">Powered by: <a href="{cp:&WEB_URL}">{cp:&COMPANY_NAME}</a></p>
-		</footer>
-		
-	</div><!--/.fluid-container-->
+    <include file="Public-Ufooter" />
 
-	<!-- external javascript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
+</div><!--/.fluid-container-->
 
-	<!-- jQuery -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery-1.7.2.min.js"></script>
-	<!-- jQuery UI -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery-ui-1.8.21.custom.min.js"></script>
-	<!-- transition / effect library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-transition.js"></script>
-	<!-- alert enhancer library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-alert.js"></script>
-	<!-- modal / dialog library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-modal.js"></script>
-	<!-- custom dropdown library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-dropdown.js"></script>
-	<!-- scrolspy library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-scrollspy.js"></script>
-	<!-- library for creating tabs -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-tab.js"></script>
-	<!-- library for advanced tooltip -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-tooltip.js"></script>
-	<!-- popover effect library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-popover.js"></script>
-	<!-- button enhancer library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-button.js"></script>
-	<!-- accordion library (optional, not used in demo) -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-collapse.js"></script>
-	<!-- carousel slideshow library (optional, not used in demo) -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-carousel.js"></script>
-	<!-- autocomplete library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-typeahead.js"></script>
-	<!-- tour library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/bootstrap-tour.js"></script>
-	<!-- library for cookie management -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.cookie.js"></script>
-	<!-- calander plugin -->
-	<script src='{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/fullcalendar.min.js'></script>
-	<!-- data table plugin -->
-	<script src='{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.dataTables.min.js'></script>
+<!-- external javascript -->
 
-	<!-- chart libraries start -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/excanvas.js"></script>
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.flot.min.js"></script>
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.flot.pie.min.js"></script>
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.flot.stack.js"></script>
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.flot.resize.min.js"></script>
-	<!-- chart libraries end -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<!-- select or dropdown enhancer -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.chosen.min.js"></script>
-	<!-- checkbox, radio, and file input styler -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.uniform.min.js"></script>
-	<!-- plugin for gallery image view -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.colorbox.min.js"></script>
-	<!-- rich text editor library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.cleditor.min.js"></script>
-	<!-- notification plugin -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.noty.js"></script>
-	<!-- file manager library -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.elfinder.min.js"></script>
-	<!-- star rating plugin -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.raty.min.js"></script>
-	<!-- for iOS style toggle switch -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.iphone.toggle.js"></script>
-	<!-- autogrowing textarea plugin -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.autogrow-textarea.js"></script>
-	<!-- multiple file upload plugin -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.uploadify-3.1.min.js"></script>
-	<!-- history.js for cross-browser state change on ajax -->
-	<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/js/jquery.history.js"></script>
-	
-		
+<!-- library for cookie management -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/moment/min/moment.min.js'></script>
+<script src='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<!-- data table plugin -->
+<script src='{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/jquery.dataTables.min.js'></script>
+
+<!-- select or dropdown enhancer -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="{cp:*WEB_PUBLIC_PATH}/Skin/html5/charisma-master/js/charisma.js"></script>
+
+
 </body>
 </html>

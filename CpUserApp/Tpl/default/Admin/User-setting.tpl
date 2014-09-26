@@ -78,22 +78,39 @@
 					</div>
 
 					<div class="page-content">
-						<div class="page-header">
-							<h1>
-								系统管理
-								<small>
-									<i class="icon-double-angle-right"></i>
-									全部设置
-								</small>
-							</h1>
-						</div><!-- /.page-header -->
-
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 
 								<form action="{cp::U('setting')}" method="post" class="form-horizontal" role="form">
-									<h4 class="header green">基础设置</h4>
+										<div class="widget-box transparent" id="recent-box">
+											<div class="widget-header">
+												<h4 class="lighter smaller">
+													<i class="icon-cogs orange"></i>
+													系统设置
+												</h4>
+
+												<div class="widget-toolbar no-border">
+													<ul class="nav nav-tabs" id="recent-tab">
+														<li class="active">
+															<a data-toggle="tab" href="#basic-tab">基础设置</a>
+														</li>
+
+														<li>
+															<a data-toggle="tab" href="#member-tab">会员设置</a>
+														</li>
+
+														<li>
+															<a data-toggle="tab" href="#email-tab">邮件服务器设置</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main padding-4">
+													<div class="tab-content padding-8 overflow-visible">
+														<div id="basic-tab" class="tab-pane active">
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="WEB_NAME"> 网站名称 </label>
 
@@ -151,7 +168,6 @@
 											<input type="text" name="WEB_DESCRIPTION" id="WEB_DESCRIPTION" placeholder="请输入网站描述" value="{cp:&WEB_DESCRIPTION}" class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
-
 									<div class="space-4"></div>
 
 									<div class="form-group">
@@ -180,9 +196,9 @@
 									</div>
 
 									<div class="space-4"></div>
+														</div>
 
-									<h4 class="header green">会员设置</h4>
-
+														<div id="member-tab" class="tab-pane">
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right"> 用户名类型 </label>
 
@@ -240,10 +256,25 @@
 									</div>
 
 									<div class="space-4"></div>
+														</div><!-- member-tab -->
 
-									<h4 class="header green">邮箱设置</h4>
-									
+														<div id="email-tab" class="tab-pane">
 									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"> 开启邮箱服务 </label>
+
+										<div class="col-sm-9">
+											<label>
+												<eq name="Think.config.EMAIL_FUNCTION" value="1">
+												<input name="EMAIL_FUNCTION" type="checkbox" class="ace ace-switch ace-switch-2" checked />
+												<else />
+												<input name="EMAIL_FUNCTION" type="checkbox" class="ace ace-switch ace-switch-2" />
+												</eq>
+												<span class="lbl"></span>
+											</label>
+										</div>
+
+										<div class="space-4"></div>
+
 										<label class="col-sm-3 control-label no-padding-right"> 发送邮件方式 </label>
 
 										<div class="col-sm-9">
@@ -460,7 +491,11 @@
 									</div>
 
 									<div class="space-4"></div>
-
+														</div>
+													</div>
+												</div><!-- /widget-main -->
+											</div><!-- /widget-body -->
+										</div><!-- /widget-box -->
 									<div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
 											<button class="btn btn-info" type="submit">

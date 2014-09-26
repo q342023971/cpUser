@@ -11,7 +11,7 @@ class PublicAction extends Action {
 			$admin=$User->loginAdmin($username,$password);
 			if($admin)
 			{
-				systemLogs($username,'','adminLogin','success');
+				systemLogs($username,'SUCCESS','adminLogin','success');
 				Session::set('adminID',$admin['id']);
 				Session::set('adminNAME',$admin['username']);
 				Session::set('lastloginip',$admin['lastloginip']);
@@ -23,7 +23,7 @@ class PublicAction extends Action {
 				$this->redirect('Index/index');
 			}else{
 				systemLogs($username,$User->getError(),'adminLogin','error');
-				$this->error($User->getError());
+				$this->error(L('MODEL_USER_'.$User->getError()));
 			}
 		}else{
 			$this->display();
